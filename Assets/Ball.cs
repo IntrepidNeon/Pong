@@ -54,7 +54,7 @@ public class Ball : MonoBehaviour
             Sender = collision.gameObject;
             Speed += 0.2f;
             Paddle PaddleRef = collision.GetComponent<Paddle>();
-            Angle = (180 - Angle + +Mathf.Atan(transform.position.y-PaddleRef.transform.position.y) * Mathf.Rad2Deg) % 360;
+            Angle = (180 - Angle - (Mathf.Cos(Angle*Mathf.Deg2Rad)/Mathf.Abs(Mathf.Cos(Angle * Mathf.Deg2Rad)))*Mathf.Atan(transform.position.y-PaddleRef.transform.position.y) * Mathf.Rad2Deg) % 360;
         }
     }
 }
